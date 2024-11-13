@@ -1,0 +1,21 @@
+name: Deploy Book
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Branch to deploy'
+        required: true
+        default: 'main'  # Set a default if needed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.branch_name }}  # Use the branch name passed from the calling workflow
+
+      # Additional steps for deployment...
+
